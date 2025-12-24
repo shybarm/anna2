@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+Disallow: /admin.html
+Disallow: /patients.html
+Disallow: /patient.html
+Disallow: /settings.html
+
+Sitemap: https://dr-anna-brameli.co.il/sitemap.xml
+
+# Crawl-delay for good citizenship
+Crawl-delay: 1
