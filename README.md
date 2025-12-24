@@ -1,194 +1,127 @@
-# ד"ר אנה ברמלי - אתר מומחית לאלרגיה ואימונולוגיה ילדים
+# ד"ר אנה ברמלי - מערכת ניהול מרפאה מלאה
 
-אתר מקצועי ומותאם SEO עבור ד"ר אנה ברמלי, מומחית לאלרגיה ואימונולוגיה ילדים במרכז הרפואי שניידר.
+אתר מקצועי עם מערכת CRM מלאה לניהול מרפאת אלרגיה ואימונולוגיה ילדים.
 
-## 🎯 תכונות עיקריות
+## 🎯 תכונות המערכת
 
-### אופטימיזציה למנועי חיפוש (SEO)
-- ✅ Meta tags מלאים בעברית ובאנגלית
-- ✅ Structured Data (JSON-LD) לרופאים ומרפאות
-- ✅ Open Graph tags לשיתוף ברשתות חברתיות
-- ✅ Sitemap.xml ו-robots.txt
-- ✅ תוכן עשיר במילות מפתח רלוונטיות
-- ✅ כותרות סמנטיות מובנות היטב
-- ✅ תיאורי ALT לתמונות
-- ✅ קישורים פנימיים אופטימליים
+### 🌐 אתר פונה לקוח
+- עיצוב רפואי מקצועי ונקי
+- אופטימיזציה מלאה ל-SEO
+- רספונסיבי לכל המכשירים
+- טופס קביעת תור עם העלאת קבצים
+- צ'אטבוט וירטואלי
+- אינטגרציה Waze + Google Maps
 
-### עיצוב ונגישות
-- 🎨 עיצוב רספונסיבי מלא (Mobile-First)
-- 🎨 פלטת צבעים רפואית מקצועית
-- 🎨 אנימציות וטרנזישנים חלקים
-- ♿ נגישות WCAG 2.1 level AA
-- 📱 תמיכה בכל הדפדפנים המודרניים
+### 👨‍⚕️ פאנל ניהול (Admin)
+- **ניהול מטופלים**: הוספה, עריכה, מחיקה, פרופיל מלא
+- **ניהול תורים**: מעקב בקשות, עדכון סטטוסים
+- **קבצים רפואיים**: העלאה, צפייה, ניהול מסמכים
+- **הגדרות**: התאמה אישית של המערכת
 
-### פונקציונליות
-- 📅 טופס קביעת תור מתקדם
-- 💬 צ'אטבוט וירטואלי
-- 📁 העלאת קבצים רפואיים
-- 📞 אינטגרציה עם Waze ו-Google Maps
-- 📧 שליחת הודעות אוטומטיות (עם Supabase)
-- 📊 מעקב אנליטיקס (Google Analytics ready)
+## 🚀 התקנה מהירה
 
-## 📁 מבנה הקבצים
+### 1. הגדרת Supabase
+
+יצירת הטבלאות:
+```sql
+-- מטופלים
+CREATE TABLE patients (
+  id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+  first_name TEXT NOT NULL,
+  last_name TEXT NOT NULL,
+  date_of_birth DATE,
+  phone TEXT,
+  email TEXT,
+  health_fund TEXT,
+  allergies TEXT[],
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
+
+-- תורים  
+CREATE TABLE appointments (
+  id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+  patient_id UUID REFERENCES patients(id),
+  appointment_date DATE NOT NULL,
+  status TEXT DEFAULT 'pending',
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
+```
+
+### 2. עדכון Credentials
+
+עדכן ב-`supabase-client.js`:
+```javascript
+const SUPABASE_URL = 'YOUR_URL';
+const SUPABASE_ANON_KEY = 'YOUR_KEY';
+```
+
+### 3. פריסה
+
+**Vercel (מומלץ):**
+```bash
+vercel
+```
+
+**Netlify:**
+```bash
+netlify deploy --prod
+```
+
+## 📂 מבנה הקבצים
 
 ```
-dr-anna-brameli/
-├── index.html              # עמוד ראשי
-├── style.css              # עיצוב ראשי
-├── script.js              # פונקציונליות JavaScript
-├── chatbot.js             # צ'אטבוט וירטואלי
-├── cleanup.js             # סקריפט עזר
-├── robots.txt             # הנחיות לרובוטים של מנועי חיפוש
-├── sitemap.xml            # מפת האתר
-├── assets/
-│   └── doctor-anna.jpg    # תמונת הרופאה
-└── README.md              # מסמך זה
+├── index.html          # עמוד ראשי
+├── admin.html          # ממשק ניהול
+├── patients.html       # רשימת מטופלים
+├── patient.html        # פרופיל מטופל
+├── settings.html       # הגדרות
+├── style.css           # עיצוב
+├── admin.js            # לוגיקת ניהול
+└── supabase-client.js  # חיבור DB
 ```
 
-## 🚀 התקנה והפעלה
+## 🔐 כניסה לאדמין
 
-### דרישות מקדימות
-- שרת אירוח (או שירות כמו Vercel, Netlify, Firebase)
-- (אופציונלי) חשבון Supabase לניהול נתונים
+URL: `https://your-domain.com/admin.html`
 
-### התקנה בסיסית
+צור משתמש ב-Supabase Authentication
 
-1. העלה את כל הקבצים לשרת האירוח שלך
-2. וודא שהקובץ `index.html` נמצא בתיקיית השורש
-3. עדכן את כתובת ה-URL הקנונית ב-`index.html`:
-   ```html
-   <link rel="canonical" href="https://YOUR-DOMAIN.co.il" />
-   ```
+## 💡 שימוש יומיומי
 
-### התקנת Supabase (אופציונלי)
+### הוספת מטופל
+1. Admin → מטופלים → הוסף חדש
+2. מלא פרטים → שמור
 
-1. צור פרויקט ב-[Supabase](https://supabase.com)
-2. צור טבלה `appointments`:
-   ```sql
-   CREATE TABLE appointments (
-     id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
-     child_first_name TEXT NOT NULL,
-     last_name TEXT NOT NULL,
-     birth_date DATE NOT NULL,
-     age TEXT NOT NULL,
-     parent_name TEXT NOT NULL,
-     phone TEXT NOT NULL,
-     email TEXT,
-     health_fund TEXT NOT NULL,
-     reason TEXT NOT NULL,
-     symptoms TEXT,
-     preferred_date DATE,
-     preferred_time TEXT,
-     files TEXT[],
-     status TEXT DEFAULT 'pending',
-     source TEXT DEFAULT 'website',
-     created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
-   );
-   ```
+### ניהול תור
+1. בקשות חדשות מופיעות באדמין
+2. לחץ לעריכה → עדכן סטטוס
 
-3. עדכן את פרטי ההתחברות ב-`index.html`:
-   ```javascript
-   window.SUPABASE_URL = "YOUR_SUPABASE_URL";
-   window.SUPABASE_ANON_KEY = "YOUR_SUPABASE_ANON_KEY";
-   ```
+### העלאת קובץ
+1. פרופיל מטופל → קבצים
+2. בחר קובץ → העלה
 
-## 🔧 התאמה אישית
+## 🎨 התאמה אישית
 
-### שינוי צבעים
-ערוך את משתני ה-CSS ב-`style.css`:
+צבעים ב-`style.css`:
 ```css
 :root {
-  --primary-color: #0066cc;
-  --secondary-color: #00a651;
-  --accent-color: #ff6b35;
+  --primary: #0066cc;
+  --secondary: #00a651;
 }
 ```
 
-### שינוי תוכן
-כל התוכן נמצא ב-`index.html` וניתן לעריכה קלה:
-- כותרות וטקסטים
-- שירותים
-- מחלות מטופלות
-- שאלות נפוצות
-
-### הוספת Google Analytics
-הוסף את קוד המעקב ב-`<head>`:
-```html
-<!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=YOUR-GA-ID"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'YOUR-GA-ID');
-</script>
-```
-
-## 📱 תכונות נוספות
-
-### צ'אטבוט
-הצ'אטבוט מופעל אוטומטית ויכול לענות על:
-- שאלות כלליות
-- קביעת תור
-- פרטי שירותים
-- מיקום המרפאה
-- יצירת קשר
-
-להשבתת הצ'אטבוט, ערוך את `chatbot.js`:
-```javascript
-const CHATBOT_CONFIG = {
-  enabled: false  // שנה ל-false
-};
-```
-
-### העלאת קבצים
-המערכת תומכת בהעלאת:
-- תמונות (JPG, PNG)
-- מסמכי PDF
-- מסמכי Word (DOC, DOCX)
-
-## 🎨 עיצוב רספונסיבי
-
-האתר מותאם באופן מלא למכשירים:
-- 📱 מובייל (עד 480px)
-- 📱 טאבלט (481px - 968px)
-- 💻 דסקטופ (969px ומעלה)
-
 ## 🔒 אבטחה
 
-- ✅ HTTPS מומלץ
-- ✅ הגנה מפני XSS
-- ✅ אימות קלטים בצד לקוח
-- ✅ הגבלת גודל קבצים
+- ✅ HTTPS חובה
+- ✅ Row Level Security
+- ✅ גיבויים שבועיים
+- ✅ סיסמאות חזקות
 
-## 📊 ביצועים
+## 📞 תמיכה
 
-האתר מותאם לביצועים:
-- ⚡ טעינה מהירה
-- ⚡ אופטימיזציית תמונות
-- ⚡ Lazy loading
-- ⚡ CSS מינימלי
-- ⚡ JavaScript יעיל
-
-## 🌐 תאימות דפדפנים
-
-- ✅ Chrome (אחרון)
-- ✅ Firefox (אחרון)
-- ✅ Safari (אחרון)
-- ✅ Edge (אחרון)
-- ✅ Chrome Mobile
-- ✅ Safari Mobile
-
-## 📧 תמיכה
-
-לשאלות נוספות או תמיכה טכנית:
-- 📞 טלפון: 054-580-8008
-- 📧 דוא"ל: info@dr-anna-brameli.co.il
-
-## 📄 רישיון
-
-כל הזכויות שמורות © 2024 ד"ר אנה ברמלי
+Email: info@dr-anna-brameli.co.il  
+Phone: 054-580-8008
 
 ---
 
-**פותח עם ❤️ לקידום הבריאות של ילדי ישראל**
+© 2024 ד"ר אנה ברמלי | כל הזכויות שמורות

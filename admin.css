@@ -1,0 +1,109 @@
+/* FILE: admin.css
+   LOCATION: /admin.css
+   ADD THIS BLOCK AT THE VERY BOTTOM (copy-paste)
+*/
+
+/* ---------- KPI cards (safe, design-aligned) ---------- */
+.admin-kpis{
+  display:grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 14px;
+}
+.kpi-card{
+  background:#fff;
+  border:1px solid rgba(0,0,0,.08);
+  border-radius:14px;
+  padding:12px 14px;
+  box-shadow: 0 10px 22px rgba(0,0,0,.04);
+}
+.kpi-label{ color:#607080; font-weight:800; font-size:12px; }
+.kpi-value{ font-size:26px; font-weight:900; margin-top:6px; color:#1f2d3d; }
+@media (max-width: 980px){
+  .admin-kpis{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* ---------- Modal (fix “files bugging on scroll”) ---------- */
+.modal-backdrop{
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.22);
+  z-index: 999999;
+  display: none;
+  padding: 18px;
+}
+.modal-backdrop.open{ display: flex; align-items: center; justify-content: center; }
+
+.modal{
+  width: min(860px, 100%);
+  max-height: min(78vh, 860px);
+  background:#fff;
+  border:1px solid rgba(0,0,0,.10);
+  border-radius: 16px;
+  box-shadow: 0 24px 70px rgba(0,0,0,.22);
+  display:flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.modal-head{
+  display:flex;
+  align-items:center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 12px 14px;
+  border-bottom: 1px solid rgba(0,0,0,.08);
+  background: rgba(0,0,0,.02);
+}
+.modal-title{ font-weight: 900; color:#1f2d3d; }
+.modal-close{
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  border: 1px solid rgba(0,0,0,.12);
+  background: #fff;
+  cursor:pointer;
+  font-weight: 900;
+}
+
+.modal-body{
+  padding: 14px;
+  overflow: auto;                 /* modal scrolls, not page */
+  -webkit-overflow-scrolling: touch;
+}
+
+/* ---------- Files list UI ---------- */
+.files-list{ display:flex; flex-direction: column; gap: 10px; }
+.file-row{
+  display:flex;
+  align-items:center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(0,0,0,.10);
+  background: #fff;
+}
+.file-name{ font-weight: 900; color:#1f2d3d; }
+.file-sub{ color:#607080; font-size: 12px; margin-top: 2px; }
+
+.files-card{
+  border: 1px solid rgba(0,0,0,.10);
+  border-radius: 12px;
+  padding: 12px;
+  background: #fff;
+  color:#1f2d3d;
+  line-height: 1.6;
+}
+.btn-sm{ padding: 10px 14px !important; border-radius: 12px !important; font-size: 13px !important; }
+
+
+/* ---------- KPI colors ---------- */
+.kpi-card{ border:1px solid rgba(0,0,0,.10); border-radius:14px; background:#fff; padding:14px; }
+.kpi-card .kpi-label{ color:#607080; font-weight:800; }
+.kpi-card .kpi-value{ font-size:28px; font-weight:900; color:#1f2d3d; margin-top:6px; }
+
+.kpi-card.kpi-total{ background: rgba(11, 94, 215, .06); border-color: rgba(11, 94, 215, .22); }
+.kpi-card.kpi-new{ background: rgba(255, 193, 7, .10); border-color: rgba(255, 193, 7, .30); }
+.kpi-card.kpi-confirmed{ background: rgba(25, 135, 84, .10); border-color: rgba(25, 135, 84, .28); }
+.kpi-card.kpi-cancelled{ background: rgba(220, 53, 69, .08); border-color: rgba(220, 53, 69, .24); }
