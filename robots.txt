@@ -1,11 +1,17 @@
+# robots.txt for dr-anna-brameli.co.il
+
 User-agent: *
 Allow: /
+Allow: /assets/
+
 Disallow: /admin.html
 Disallow: /patients.html
 Disallow: /patient.html
 Disallow: /settings.html
+Disallow: /supabase/
 
-Sitemap: https://dr-anna-brameli.co.il/sitemap.xml
+# Sitemaps
+Sitemap: https://www.dr-anna-brameli.co.il/sitemap.xml
 
-# Crawl-delay for good citizenship
+# Crawl-delay
 Crawl-delay: 1

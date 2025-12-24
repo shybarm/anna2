@@ -1,57 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  
-  <!-- Homepage -->
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
-    <loc>https://dr-anna-brameli.co.il/</loc>
+    <loc>https://www.dr-anna-brameli.co.il/</loc>
     <lastmod>2024-12-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-    <xhtml:link 
-      rel="alternate" 
-      hreflang="he" 
-      href="https://dr-anna-brameli.co.il/" />
+    <image:image>
+      <image:loc>https://www.dr-anna-brameli.co.il/assets/doctor-anna.jpg</image:loc>
+      <image:title>ד״ר אנה ברמלי - מומחית אלרגיה ואימונולוגיה ילדים</image:title>
+    </image:image>
   </url>
-  
-  <!-- About Section -->
   <url>
-    <loc>https://dr-anna-brameli.co.il/#about</loc>
-    <lastmod>2024-12-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  
-  <!-- Services Section -->
-  <url>
-    <loc>https://dr-anna-brameli.co.il/#services</loc>
+    <loc>https://www.dr-anna-brameli.co.il/#about</loc>
     <lastmod>2024-12-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
-  
-  <!-- Conditions Section -->
   <url>
-    <loc>https://dr-anna-brameli.co.il/#conditions</loc>
-    <lastmod>2024-12-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  
-  <!-- Contact Section -->
-  <url>
-    <loc>https://dr-anna-brameli.co.il/#contact</loc>
-    <lastmod>2024-12-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  
-  <!-- Appointment Section -->
-  <url>
-    <loc>https://dr-anna-brameli.co.il/#appointment</loc>
+    <loc>https://www.dr-anna-brameli.co.il/#services</loc>
     <lastmod>2024-12-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
-  
+  <url>
+    <loc>https://www.dr-anna-brameli.co.il/#contact</loc>
+    <lastmod>2024-12-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.dr-anna-brameli.co.il/#appointment</loc>
+    <lastmod>2024-12-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
 </urlset>
